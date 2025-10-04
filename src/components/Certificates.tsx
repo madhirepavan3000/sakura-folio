@@ -17,6 +17,7 @@ const certificates = [
     date: "Dec 2023",
     duration: "100 Hours",
     certificateId: "28JQN7WN",
+    link: "https://drive.google.com/file/d/15atPM7IJdeGB4IPcNoyhgtw0n8EDOU60/view",
     skills: ["MERN Stack", "HTML", "CSS", "JavaScript", "React.js", "Bootstrap"],
   },
   {
@@ -32,6 +33,7 @@ const certificates = [
     issuer: "1Stop.ai",
     date: "Mar 2024",
     credentialId: "madhirepavan@gmail.com",
+    link: "https://drive.google.com/file/d/1-yNBbgnn0gk5QmSYLJ7QOFLmj2_MzaEh/view?usp=sharing",
     skills: ["Data Science", "Python", "Analytics"],
   },
   {
@@ -39,6 +41,7 @@ const certificates = [
     issuer: "Aviatrix",
     date: "Jun 2025",
     expiry: "Jun 2028",
+    link: "https://drive.google.com/file/d/1RyWC3vtvIrcpWjoJRjzHvu_k4jgsFUsD/view?usp=sharing",
     skills: ["Cloud Networking", "Multicloud"],
   },
   {
@@ -46,6 +49,7 @@ const certificates = [
     issuer: "Let's Code Community",
     date: "Jun 2025",
     achievement: "All India Rank 231 out of 5,700+ participants",
+    link: "https://unstop.com/certificate-preview/fe15dc68-eff4-44ef-920e-d5b6eafefd0f",
     skills: ["DSA", "Algorithms", "Problem Solving"],
   },
 ];

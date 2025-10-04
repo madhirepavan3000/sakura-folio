@@ -47,7 +47,7 @@ export const Hero = () => {
               <p className="text-xl md:text-2xl text-muted-foreground font-light">
                 Programmer Analyst Trainee @ Cognizant
               </p>
-              <p className="text-lg text-muted-foreground max-w-2xl">
+              <p className="text-lg text-foreground/90 font-medium max-w-2xl">
                 Specializing in SAP HANA, Data Analytics, AI/ML & Full Stack Development
               </p>
             </div>
@@ -116,12 +116,12 @@ export const Hero = () => {
           {/* Right Side - Profile Image */}
           <div className="flex justify-center lg:justify-end animate-scale-in">
             <div className="relative group">
-              <div className="absolute -inset-2 bg-gradient-to-r from-primary to-secondary rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition duration-500" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur-xl opacity-60 group-hover:opacity-90 transition duration-500" />
               <div className="relative">
                 <img
                   src={profileImg}
                   alt="M. Pavan Kumar Reddy"
-                  className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-3xl object-cover border-4 border-background shadow-2xl"
+                  className="relative w-72 h-72 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-background shadow-2xl"
                 />
               </div>
             </div>
