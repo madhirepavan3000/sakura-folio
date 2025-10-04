@@ -1,7 +1,7 @@
 import { Github, Linkedin, Mail, Code, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/hero-bg.jpg";
-import profileImg from "@/assets/profile-placeholder.jpg";
+import profileImg from "@/assets/profile.jpg";
 
 export const Hero = () => {
   return (
@@ -36,90 +36,95 @@ export const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in-up">
-          {/* Profile Image */}
-          <div className="flex justify-center mb-8">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-full blur-lg opacity-75 group-hover:opacity-100 transition duration-500" />
-              <img
-                src={profileImg}
-                alt="M. Pavan Kumar Reddy"
-                className="relative w-40 h-40 rounded-full object-cover border-4 border-background shadow-2xl"
-              />
+        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
+          {/* Left Side - Text Content */}
+          <div className="space-y-8 animate-fade-in-up">
+            {/* Name and Title */}
+            <div className="space-y-4">
+              <h1 className="text-5xl md:text-7xl font-bold">
+                <span className="text-gradient">M. Pavan Kumar Reddy</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-muted-foreground font-light">
+                Programmer Analyst Trainee @ Cognizant
+              </p>
+              <p className="text-lg text-muted-foreground max-w-2xl">
+                Specializing in SAP HANA, Data Analytics, AI/ML & Full Stack Development
+              </p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow transition-all duration-300"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                <Mail className="mr-2 h-5 w-5" />
+                Get In Touch
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="border-2 hover:bg-primary/10"
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                View Projects
+              </Button>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex gap-4 pt-4">
+              <a
+                href="https://github.com/madhirepavan3000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-card hover:bg-primary/10 transition-all duration-300 hover-lift"
+              >
+                <Github className="h-6 w-6" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/madhire-pavan-kumar-reddy-940808219/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-card hover:bg-primary/10 transition-all duration-300 hover-lift"
+              >
+                <Linkedin className="h-6 w-6" />
+              </a>
+              <a
+                href="https://leetcode.com/u/Madhire_Pavan_kumar_reddy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-card hover:bg-primary/10 transition-all duration-300 hover-lift"
+              >
+                <Code className="h-6 w-6" />
+              </a>
+              <a
+                href="mailto:madhirepavan3000@gmail.com"
+                className="p-3 rounded-full bg-card hover:bg-primary/10 transition-all duration-300 hover-lift"
+              >
+                <Mail className="h-6 w-6" />
+              </a>
+              <a
+                href="tel:+918341227516"
+                className="p-3 rounded-full bg-card hover:bg-primary/10 transition-all duration-300 hover-lift"
+              >
+                <Phone className="h-6 w-6" />
+              </a>
             </div>
           </div>
 
-          {/* Name and Title */}
-          <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-bold">
-              <span className="text-gradient">M. Pavan Kumar Reddy</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground font-light">
-              Programmer Analyst Trainee @ Cognizant
-            </p>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Specializing in SAP HANA, Data Analytics, AI/ML & Full Stack Development
-            </p>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-primary to-secondary hover:shadow-glow transition-all duration-300"
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              <Mail className="mr-2 h-5 w-5" />
-              Get In Touch
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="border-2 hover:bg-primary/10"
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              View Projects
-            </Button>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex gap-4 justify-center pt-4">
-            <a
-              href="https://github.com/madhirepavan3000"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-card hover:bg-primary/10 transition-all duration-300 hover-lift"
-            >
-              <Github className="h-6 w-6" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/madhire-pavan-kumar-reddy-940808219/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-card hover:bg-primary/10 transition-all duration-300 hover-lift"
-            >
-              <Linkedin className="h-6 w-6" />
-            </a>
-            <a
-              href="https://leetcode.com/u/Madhire_Pavan_kumar_reddy/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-card hover:bg-primary/10 transition-all duration-300 hover-lift"
-            >
-              <Code className="h-6 w-6" />
-            </a>
-            <a
-              href="mailto:madhirepavan3000@gmail.com"
-              className="p-3 rounded-full bg-card hover:bg-primary/10 transition-all duration-300 hover-lift"
-            >
-              <Mail className="h-6 w-6" />
-            </a>
-            <a
-              href="tel:+918341227516"
-              className="p-3 rounded-full bg-card hover:bg-primary/10 transition-all duration-300 hover-lift"
-            >
-              <Phone className="h-6 w-6" />
-            </a>
+          {/* Right Side - Profile Image */}
+          <div className="flex justify-center lg:justify-end animate-scale-in">
+            <div className="relative group">
+              <div className="absolute -inset-2 bg-gradient-to-r from-primary to-secondary rounded-3xl blur-2xl opacity-50 group-hover:opacity-75 transition duration-500" />
+              <div className="relative">
+                <img
+                  src={profileImg}
+                  alt="M. Pavan Kumar Reddy"
+                  className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-3xl object-cover border-4 border-background shadow-2xl"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
