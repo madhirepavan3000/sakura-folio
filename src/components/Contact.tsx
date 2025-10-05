@@ -50,7 +50,7 @@ export const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Location</p>
-                  <p className="font-medium">Chennai, Tamil Nadu, India</p>
+                  <p className="font-medium">Hyderabad, Telangana, India</p>
                 </div>
               </div>
             </div>

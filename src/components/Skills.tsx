@@ -84,10 +84,18 @@ export const Skills = () => {
     checkScroll();
     scrollContainer.addEventListener('scroll', checkScroll);
 
-    // Auto-scroll
+    // Duplicate content for seamless loop
+    const items = scrollContainer.children;
+    const itemsArray = Array.from(items);
+    itemsArray.forEach((item) => {
+      const clone = item.cloneNode(true);
+      scrollContainer.appendChild(clone);
+    });
+
+    // Auto-scroll with seamless loop
     const autoScroll = setInterval(() => {
-      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth - 10) {
-        scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
+        scrollContainer.scrollLeft = 0;
       } else {
         scrollContainer.scrollBy({ left: 1, behavior: 'auto' });
       }
