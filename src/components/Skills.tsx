@@ -61,32 +61,34 @@ export const Skills = () => {
         </h2>
         <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-16 rounded-full" />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {skillCategories.map((category, index) => (
-            <div
-              key={index}
-              className="card-sakura hover-lift group"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 bg-gradient-to-br from-primary to-secondary rounded-xl group-hover:scale-110 transition-transform duration-300">
-                  <category.icon className="h-6 w-6 text-white" />
+        <div className="relative">
+          <div className="flex gap-6 overflow-x-auto pb-4 px-4 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-primary scrollbar-track-muted">
+            {skillCategories.map((category, index) => (
+              <div
+                key={index}
+                className="card-sakura hover-lift group flex-shrink-0 w-80 snap-start"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-3 bg-gradient-to-br from-primary to-secondary rounded-xl group-hover:scale-110 transition-transform duration-300">
+                    <category.icon className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold">{category.title}</h3>
                 </div>
-                <h3 className="text-xl font-bold">{category.title}</h3>
+                
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1.5 bg-muted text-sm rounded-lg border border-border hover:border-primary hover:bg-primary/10 transition-all duration-200"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
               </div>
-              
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1.5 bg-muted text-sm rounded-lg border border-border hover:border-primary hover:bg-primary/10 transition-all duration-200"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

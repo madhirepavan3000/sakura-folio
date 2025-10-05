@@ -63,89 +63,91 @@ export const Certificates = () => {
         </h2>
         <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-16 rounded-full" />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {certificates.map((cert, index) => (
-            <div
-              key={index}
-              className="card-sakura hover-lift flex flex-col h-full group"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="flex items-start gap-3 mb-4">
-                <div className="p-2 bg-gradient-to-br from-primary to-secondary rounded-lg group-hover:scale-110 transition-transform duration-300">
-                  <Award className="h-5 w-5 text-white" />
+        <div className="relative">
+          <div className="flex gap-6 overflow-x-auto pb-4 px-4 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-primary scrollbar-track-muted">
+            {certificates.map((cert, index) => (
+              <div
+                key={index}
+                className="card-sakura hover-lift flex flex-col h-full group flex-shrink-0 w-96 snap-start"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="flex items-start gap-3 mb-4">
+                  <div className="p-2 bg-gradient-to-br from-primary to-secondary rounded-lg group-hover:scale-110 transition-transform duration-300">
+                    <Award className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-lg leading-tight mb-1 group-hover:text-primary transition-colors">
+                      {cert.title}
+                    </h3>
+                    <p className="text-sm text-primary font-medium">{cert.issuer}</p>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-bold text-lg leading-tight mb-1 group-hover:text-primary transition-colors">
-                    {cert.title}
-                  </h3>
-                  <p className="text-sm text-primary font-medium">{cert.issuer}</p>
+
+                <div className="flex-1 space-y-2 mb-4">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Calendar className="h-4 w-4" />
+                    <span>{cert.date}</span>
+                    {cert.expiry && <span className="text-xs">• Expires {cert.expiry}</span>}
+                  </div>
+
+                  {cert.credentialId && (
+                    <p className="text-xs text-muted-foreground">
+                      ID: {cert.credentialId}
+                    </p>
+                  )}
+
+                  {cert.certificateId && (
+                    <p className="text-xs text-muted-foreground">
+                      Certificate ID: {cert.certificateId}
+                    </p>
+                  )}
+
+                  {cert.duration && (
+                    <p className="text-xs text-muted-foreground">
+                      Duration: {cert.duration}
+                    </p>
+                  )}
+
+                  {cert.project && (
+                    <p className="text-sm text-foreground font-medium">
+                      Project: {cert.project}
+                    </p>
+                  )}
+
+                  {cert.achievement && (
+                    <p className="text-sm text-foreground font-medium">
+                      🏆 {cert.achievement}
+                    </p>
+                  )}
+
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {cert.skills.map((skill, i) => (
+                      <span
+                        key={i}
+                        className="px-2 py-0.5 text-xs bg-primary/10 text-primary rounded"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
+
+                {cert.link && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full mt-auto"
+                    asChild
+                  >
+                    <a href={cert.link} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      View Certificate
+                    </a>
+                  </Button>
+                )}
               </div>
-
-              <div className="flex-1 space-y-2 mb-4">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Calendar className="h-4 w-4" />
-                  <span>{cert.date}</span>
-                  {cert.expiry && <span className="text-xs">• Expires {cert.expiry}</span>}
-                </div>
-
-                {cert.credentialId && (
-                  <p className="text-xs text-muted-foreground">
-                    ID: {cert.credentialId}
-                  </p>
-                )}
-
-                {cert.certificateId && (
-                  <p className="text-xs text-muted-foreground">
-                    Certificate ID: {cert.certificateId}
-                  </p>
-                )}
-
-                {cert.duration && (
-                  <p className="text-xs text-muted-foreground">
-                    Duration: {cert.duration}
-                  </p>
-                )}
-
-                {cert.project && (
-                  <p className="text-sm text-foreground font-medium">
-                    Project: {cert.project}
-                  </p>
-                )}
-
-                {cert.achievement && (
-                  <p className="text-sm text-foreground font-medium">
-                    🏆 {cert.achievement}
-                  </p>
-                )}
-
-                <div className="flex flex-wrap gap-1.5 pt-2">
-                  {cert.skills.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="px-2 py-0.5 text-xs bg-primary/10 text-primary rounded"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {cert.link && (
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full mt-auto"
-                  asChild
-                >
-                  <a href={cert.link} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    View Certificate
-                  </a>
-                </Button>
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
