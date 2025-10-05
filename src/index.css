@@ -133,6 +133,9 @@ All colors MUST be HSL.
     box-shadow: 0 0 40px hsl(var(--primary) / 0.3);
   }
   
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
   .card-sakura {
     @apply bg-card rounded-2xl p-6 shadow-card border border-border/50;
   }

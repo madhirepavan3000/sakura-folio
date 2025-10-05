@@ -1,5 +1,6 @@
-import { Award, ExternalLink, Calendar } from "lucide-react";
+import { Award, ExternalLink, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useEffect, useRef, useState } from "react";
 
 const certificates = [
   {
@@ -55,6 +56,50 @@ const certificates = [
 ];
 
 export const Certificates = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = 420;
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    checkScroll();
+    scrollContainer.addEventListener('scroll', checkScroll);
+
+    // Auto-scroll
+    const autoScroll = setInterval(() => {
+      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth - 10) {
+        scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        scrollContainer.scrollBy({ left: 1, behavior: 'auto' });
+      }
+    }, 30);
+
+    return () => {
+      scrollContainer.removeEventListener('scroll', checkScroll);
+      clearInterval(autoScroll);
+    };
+  }, []);
+
   return (
     <section id="certificates" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -63,27 +108,41 @@ export const Certificates = () => {
         </h2>
         <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-16 rounded-full" />
 
-        <div className="relative">
-          <div className="flex gap-6 overflow-x-auto pb-4 px-4 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-primary scrollbar-track-muted">
+        <div className="relative group">
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-0"
+            onClick={() => scroll('left')}
+            disabled={!canScrollLeft}
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+
+          <div 
+            ref={scrollRef}
+            className="flex gap-6 overflow-x-auto pb-4 px-4 scrollbar-hide"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
             {certificates.map((cert, index) => (
               <div
                 key={index}
-                className="card-sakura hover-lift flex flex-col h-full group flex-shrink-0 w-96 snap-start"
+                className="card-sakura hover-lift flex flex-col group/card flex-shrink-0 w-96 h-[420px]"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-start gap-3 mb-4">
-                  <div className="p-2 bg-gradient-to-br from-primary to-secondary rounded-lg group-hover:scale-110 transition-transform duration-300">
+                  <div className="p-2 bg-gradient-to-br from-primary to-secondary rounded-lg group-hover/card:scale-110 transition-transform duration-300">
                     <Award className="h-5 w-5 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-bold text-lg leading-tight mb-1 group-hover:text-primary transition-colors">
+                    <h3 className="font-bold text-lg leading-tight mb-1 group-hover/card:text-primary transition-colors">
                       {cert.title}
                     </h3>
                     <p className="text-sm text-primary font-medium">{cert.issuer}</p>
                   </div>
                 </div>
 
-                <div className="flex-1 space-y-2 mb-4">
+                <div className="flex-1 space-y-2 mb-4 overflow-y-auto">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Calendar className="h-4 w-4" />
                     <span>{cert.date}</span>
@@ -148,6 +207,16 @@ export const Certificates = () => {
               </div>
             ))}
           </div>
+
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-0"
+            onClick={() => scroll('right')}
+            disabled={!canScrollRight}
+          >
+            <ChevronRight className="h-4 w-4" />
+          </Button>
         </div>
       </div>
     </section>
