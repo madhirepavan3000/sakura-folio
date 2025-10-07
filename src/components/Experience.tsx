@@ -1,8 +1,11 @@
 import { Briefcase, Calendar } from "lucide-react";
+import cognizantLogo from "@/assets/cognizant-logo.png";
+import outlierLogo from "@/assets/outlier-logo.png";
 
 const experiences = [
   {
     company: "Cognizant",
+    logo: cognizantLogo,
     role: "Programmer Analyst Trainee",
     period: "Jul 2025 - Present",
     location: "Chennai, Tamil Nadu, India",
@@ -15,6 +18,7 @@ const experiences = [
   },
   {
     company: "Outlier",
+    logo: outlierLogo,
     role: "AI Evaluation Specialist",
     period: "Dec 2024 - Apr 2025",
     location: "Remote",
@@ -64,9 +68,12 @@ export const Experience = () => {
                       <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                         {exp.role}
                       </h3>
-                      <p className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-2">
-                        {exp.company}
-                      </p>
+                      <div className="flex items-center gap-3 mb-2">
+                        <img src={exp.logo} alt={exp.company} className="w-8 h-8 object-contain" />
+                        <p className="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                          {exp.company}
+                        </p>
+                      </div>
                       <p className="text-sm font-medium text-muted-foreground mb-1">
                         {exp.description}
                       </p>

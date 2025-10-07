@@ -1,4 +1,4 @@
-import { Code2, Database, Wrench, Laptop, GraduationCap, ChevronLeft, ChevronRight } from "lucide-react";
+import { Code2, Database, Wrench, Laptop, GraduationCap, ChevronLeft, ChevronRight, Github, FileCode, Terminal, Cloud, BookOpen, Braces, FileJson, Server, Globe, Cog, Box, Binary, GitBranch, Layers } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -6,51 +6,59 @@ const skillCategories = [
   {
     title: "Programming",
     icon: Code2,
-    skills: ["Java", "Python"],
+    skills: [
+      { name: "Java", icon: FileCode },
+      { name: "Python", icon: Code2 }
+    ],
   },
   {
     title: "Databases",
     icon: Database,
     skills: [
-      "SAP HANA (XSA, HDI)",
-      "Calculation Views",
-      "Flow Graphs",
-      "Oracle SQL",
-      "PL/SQL",
-      "MongoDB",
-      "MySQL",
+      { name: "SAP HANA (XSA, HDI)", icon: Database },
+      { name: "Calculation Views", icon: Layers },
+      { name: "Flow Graphs", icon: GitBranch },
+      { name: "Oracle SQL", icon: Database },
+      { name: "PL/SQL", icon: FileCode },
+      { name: "MongoDB", icon: Database },
+      { name: "MySQL", icon: Database },
     ],
   },
   {
     title: "Tools",
     icon: Wrench,
     skills: [
-      "GitHub",
-      "VS Code",
-      "Linux (Ubuntu)",
-      "Google Colab",
-      "Jupyter Notebook",
-      "Streamlit",
+      { name: "GitHub", icon: Github },
+      { name: "VS Code", icon: FileCode },
+      { name: "Linux (Ubuntu)", icon: Terminal },
+      { name: "Google Colab", icon: Cloud },
+      { name: "Jupyter Notebook", icon: BookOpen },
+      { name: "Streamlit", icon: Braces },
     ],
   },
   {
     title: "Development",
     icon: Laptop,
     skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "Flask",
-      "Django",
+      { name: "HTML", icon: FileCode },
+      { name: "CSS", icon: FileJson },
+      { name: "JavaScript", icon: Braces },
+      { name: "React.js", icon: Globe },
+      { name: "Node.js", icon: Server },
+      { name: "Express.js", icon: Server },
+      { name: "Flask", icon: Server },
+      { name: "Django", icon: Server },
     ],
   },
   {
     title: "CS Fundamentals",
     icon: GraduationCap,
-    skills: ["DBMS", "OOP", "Data Structures", "Algorithms"],
+    skills: [
+      { name: "DBMS", icon: Database },
+      { name: "OOP", icon: Box },
+      { name: "Data Structures", icon: Binary },
+      { name: "Algorithms", icon: Cog }
+    ],
   },
 ];
 
@@ -145,14 +153,18 @@ export const Skills = () => {
                 </div>
                 
                 <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1.5 bg-muted text-sm rounded-lg border border-border hover:border-primary hover:bg-primary/10 transition-all duration-200"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                  {category.skills.map((skill, i) => {
+                    const SkillIcon = skill.icon;
+                    return (
+                      <span
+                        key={i}
+                        className="px-3 py-1.5 bg-muted text-sm rounded-lg border border-border hover:border-primary hover:bg-primary/10 transition-all duration-200 flex items-center gap-2"
+                      >
+                        <SkillIcon className="h-4 w-4 text-primary" />
+                        {skill.name}
+                      </span>
+                    );
+                  })}
                 </div>
               </div>
             ))}
