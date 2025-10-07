@@ -1,4 +1,5 @@
-import { GraduationCap, Award, TrendingUp } from "lucide-react";
+import { Award, TrendingUp } from "lucide-react";
+import vitApLogo from "@/assets/vit-ap-logo.png";
 
 export const About = () => {
   return (
@@ -12,8 +13,8 @@ export const About = () => {
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div className="card-sakura hover-lift text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl mx-auto mb-4 flex items-center justify-center">
-                <GraduationCap className="h-8 w-8 text-white" />
+              <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                <img src={vitApLogo} alt="VIT-AP University" className="w-full h-full object-contain" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Education</h3>
               <p className="text-sm text-muted-foreground">B.Tech in CSE</p>
