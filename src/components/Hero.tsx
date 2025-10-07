@@ -1,9 +1,13 @@
-import { Github, Linkedin, Mail, Code, Phone } from "lucide-react";
+import { useState } from "react";
+import { Github, Linkedin, Mail, Code, Phone, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ResumeViewer } from "@/components/ResumeViewer";
 import heroBg from "@/assets/hero-bg.jpg";
 import profileImg from "@/assets/profile.jpg";
 
 export const Hero = () => {
+  const [resumeOpen, setResumeOpen] = useState(false);
+
   return (
     <section 
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
@@ -70,7 +74,18 @@ export const Hero = () => {
               >
                 View Projects
               </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="border-2 hover:bg-primary/10"
+                onClick={() => setResumeOpen(true)}
+              >
+                <FileText className="mr-2 h-5 w-5" />
+                View Resume
+              </Button>
             </div>
+
+            <ResumeViewer open={resumeOpen} onOpenChange={setResumeOpen} />
 
             {/* Social Links */}
             <div className="flex gap-4 pt-4">
