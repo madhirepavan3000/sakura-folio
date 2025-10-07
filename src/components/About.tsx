@@ -1,17 +1,25 @@
 import { Award, TrendingUp } from "lucide-react";
 import vitApLogo from "@/assets/vit-ap-logo.png";
+import { AnimeCharacter3D } from "@/components/AnimeCharacter3D";
 
 export const About = () => {
   return (
     <section id="about" className="py-20 bg-gradient-to-b from-background to-muted/30">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             <span className="text-gradient">About Me</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-12 rounded-full" />
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid lg:grid-cols-2 gap-12 mb-12">
+            {/* Left Side - 3D Anime Character */}
+            <div className="flex items-center justify-center">
+              <AnimeCharacter3D />
+            </div>
+
+            {/* Right Side - Info Cards */}
+            <div className="grid md:grid-cols-2 gap-8">
             <div className="card-sakura hover-lift text-center">
               <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
                 <img src={vitApLogo} alt="VIT-AP University" className="w-full h-full object-contain" />
@@ -43,6 +51,7 @@ export const About = () => {
               <p className="text-sm font-semibold text-primary">Cognizant</p>
               <p className="text-xs text-muted-foreground mt-1">SAP HANA Specialist</p>
               <p className="text-xs text-muted-foreground">Jul 2025 - Present</p>
+            </div>
             </div>
           </div>
 
