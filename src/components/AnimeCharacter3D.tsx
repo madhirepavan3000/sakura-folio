@@ -2,12 +2,11 @@ import { useRef, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Environment, ContactShadows } from "@react-three/drei";
 import * as THREE from "three";
-import characterModel from "@/assets/character-model.glb";
 
 // 3D Model Component
 const Model3D = ({ scrollRotation }: { scrollRotation: number }) => {
   const groupRef = useRef<THREE.Group>(null);
-  const { scene } = useGLTF(characterModel);
+  const { scene } = useGLTF("/character-model.glb");
 
   useFrame(() => {
     if (groupRef.current) {
